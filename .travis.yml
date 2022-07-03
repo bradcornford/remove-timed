@@ -7,7 +7,7 @@ services:
 
 env:
   global:
-    - DOCKERHUB="tzinm/remove-finished"
+    - DOCKERHUB="bradcornford/remove-timed"
 
 jobs:
   include:
