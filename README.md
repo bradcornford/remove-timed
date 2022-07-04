@@ -11,6 +11,7 @@ Moreover use [linuxserver/transmission](https://hub.docker.com/r/linuxserver/tra
 ```bash
 -e DOCKER_MODS=bradcornford/remove-timed:latest \
 -e AUTOREMOVE=yes \
+-e AUTODELETE=yes \
 -e CRONDATE=monthly \
 -e SEEDTIME=30 \
 -e AUTHENABLE=yes \#optional
@@ -22,7 +23,8 @@ Moreover use [linuxserver/transmission](https://hub.docker.com/r/linuxserver/tra
 
 | Parameter           | Function                                                                                                                      |
 |---------------------|-------------------------------------------------------------------------------------------------------------------------------|
-| `-e AUTOREMOVE=yes` | Active a script to autoremove torrents when these have finished and met their seed time.                                      |
+| `-e AUTOREMOVE=yes` | Active a script to autoremove torrents when these have finished and met their seed time. **no** is defined by default.        |
+| `-e AUTODELETE=yes` | Delete files when autoremoving torrents. **no** is defined by default.                                                        |
 | `-e SEEDTIME=1`     | Seed time in days a torrent should be ignored for. **1** day is defined by default.                                           |
 | `-e CRONDATE=daily` | Specify when torrents have to be removed. Options are: **monthly**, **weekly** or **daily**. **Daily** is defined by default. |
 | `-e AUTHENABLE=yes` | When **user** and **pass** have been defined and **autoremove** is enabled, this parameter has to be activated.               |

@@ -28,8 +28,13 @@ do
 
     # if the torrent is "Stopped", "Finished", or "Idle after downloading 100%" and has met the required seed time in days
     if [ "$DL_COMPLETED" ] && [ "$STATE_STOPPED" ] && [[ $SEEDED_TIME -ge $SEED_TIME ]]; then
-        echo "Torrent #$TORRENTID is completed. Removing torrent from list."
-        transmission-remote $SERVER --torrent $TORRENTID --remove
+        if [[ $AUTODELETE = "yes" ]]; then
+          echo "Torrent #$TORRENTID is completed. Removing torrent from list and deleting files."
+          transmission-remote $SERVER --torrent $TORRENTID --remove-and-delete
+        else
+          echo "Torrent #$TORRENTID is completed. Removing torrent from list."
+          transmission-remote $SERVER --torrent $TORRENTID --remove
+        fi
     else
         echo "Torrent #$TORRENTID is not completed. Ignoring."
     fi

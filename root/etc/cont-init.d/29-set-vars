@@ -1,7 +1,7 @@
 #!/usr/bin/with-contenv bash
 
 # write variables to file for cron access
-echo "AUTHENABLE=\"$AUTHENABLE\" USER=\"$USER\" PASS=\"$PASS\" SEEDTIME=$SEEDTIME " > /defaults/variables.txt
+echo "AUTHENABLE=\"$AUTHENABLE\" USER=\"$USER\" PASS=\"$PASS\" AUTODELETE=\"$AUTODELETE\" SEEDTIME=$SEEDTIME " > /defaults/variables.txt
 
 if [[ $AUTOREMOVE = "yes" ]]; then
   for i in daily weekly monthly; do
